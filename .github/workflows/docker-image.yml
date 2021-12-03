@@ -15,4 +15,12 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag gcr.io/kaniko-project/executor:v1.7.0
+      run: docker build . --file Dockerfile --tag docker.nexus.frp.gres.kuanfans.com/kaniko-project/executor:v1.7.0
+    - uses: docker/login-action@v1
+    - name: login docker
+      with:
+        registry: https://docker.nexus.frp.gres.kuanfans.com
+        username: admin
+        password: ${{ secrets.ACCESS_TOKEN }}
+    - name: push Docker image
+      run: docker push docker.nexus.frp.gres.kuanfans.com/kaniko-project/executor:v1.7.0
