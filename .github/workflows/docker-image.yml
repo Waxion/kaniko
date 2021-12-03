@@ -22,5 +22,3 @@ jobs:
         registry: https://docker.nexus.frp.gres.kuanfans.com
         username: admin
         password: ${{ secrets.ACCESS_TOKEN }}
-    - name: push Docker image
-      run: docker push docker.nexus.frp.gres.kuanfans.com/kaniko-project/executor:v1.7.0
